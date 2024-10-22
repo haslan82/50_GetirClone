@@ -19,11 +19,16 @@ import Foundation from "@expo/vector-icons/Foundation";
 import React, { useEffect, useState } from "react";
 import CartScreen from "../screens/CartScreen";
 import { connect } from "react-redux";
+import CartItem from "../components/CartItem";
 
 const Stack = createNativeStackNavigator();
-const { width, height } = Dimensions.get("window");
-const MyStack = ({ navigation, route,CartItems }:{CartItems:{product:Product, quantity:number}[]}) => {
   const tabHiddenRoutes = ["ProductDetails", "CartScreen"];
+
+const { width, height } = Dimensions.get("window");
+
+
+const MyStack = ({ navigation, route,CartItems }:{CartItems:{product:Product, quantity:number}[]}) => {
+  const [totalPrice, setTotalPrice] = useState<number>(0)
 
   React.useLayoutEffect(() => {
     const routeName = getFocusedRouteNameFromRoute(route);
@@ -39,21 +44,19 @@ const MyStack = ({ navigation, route,CartItems }:{CartItems:{product:Product, qu
   }, [navigation, route]);
 
 
-  const {totalPrice, setTotalPrice} = useState<number>(0)
+  
   const getProductsPrice = () => {
     var total=0
-    CartItems.forEach(product => {
-      const price = (total += product.product.fiyat)
+
+  
+    CartItems.forEach(CartItems => {
+      const price = (total += CartItems.product?.fiyat)
       setTotalPrice(price)
     })
   } 
 
 useEffect(() => {
   getProductsPrice()
-
-  return (() => {
-    
-  })
 
 },[navigation,route,CartItems])
 
@@ -187,7 +190,7 @@ const mapStateToProps = (state) =>{
 }
 
 
- function HomeNavigator({ navigation, route,CartItems }) {
+ function HomeNavigator({ navigation, route,CartItems }:{cartItems:Product[]}) {
   return <MyStack navigation={navigation} route={route} CartItems={CartItems}/>
 }
 

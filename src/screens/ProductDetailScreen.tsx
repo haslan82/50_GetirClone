@@ -12,7 +12,7 @@ import CartButton from '../components/CartButton'
 const ProductDetailScreen = (props) => {
     const [product, setProduct] = useState<Product>()
     useEffect(() =>{
-        setProduct(props.route.params.product)
+        setProduct(props.route.params?.product)
     },[])
 
     if(!product){
