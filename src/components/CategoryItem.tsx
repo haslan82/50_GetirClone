@@ -18,7 +18,7 @@ const CategoryItem=({item}:categoryItemProps) => {
   return (
 
    <TouchableOpacity
-   onPress={()=>navigation.navigate("CategoryDetails", {category:item})}
+   onPress={()=>navigation.navigate("CategoryDetails", {category:item.name})}
    style={styles.touch} >
     <Image
         style={{ width: width * 0.18, height: width * 0.18, borderRadius: 10 }}

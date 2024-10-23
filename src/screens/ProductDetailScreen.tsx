@@ -27,7 +27,7 @@ const ProductDetailScreen = (props) => {
     <Text style={{paddingHorizontal:10, paddingVertical:14, color:'#808b99', fontWeight:'600'}}>Detaylar</Text>
     <Detailproperty />
     </ScrollView>
-    <CartButton product={product}/>
+    <CartButton item={product}/>
     
     </View>
   )

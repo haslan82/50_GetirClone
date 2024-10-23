@@ -6,7 +6,7 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { FlatList, GestureHandlerRootView } from "react-native-gesture-handler";
 import ProductsGetir from "../../assets/ProductsGetir";
 import CartItem from "../components/CartItem";
@@ -15,19 +15,32 @@ import { connect } from "react-redux";
 
 const { width, height } = Dimensions.get("window");
 
-const CartScreen = ({CartItems}:{CartItems:{product:Product, quantity:number}[]}) => {
+const CartScreen = ({CartItems,
+  route}:{CartItems:{product:Product; quantity:number }[],route:any;}) => {
 
+ const [totalPrice, setTotalPrice]  = useState<number>(0)
+ const getProductsPrice = () => {
+  let total = 0;
+  CartItems.forEach((product) => {
+    total += product.product.fiyat;
+    setTotalPrice(total);
+  });
+
+  CartItems.length ? null : setTotalPrice(0)
+
+};
+useEffect(()=>{
+  getProductsPrice()
+},[CartItems])
   return (
 
-
-    
     <GestureHandlerRootView>
       <View style={{ flex: 1 }}>
         <ScrollView>
            <FlatList
           style={{ flex: 1 }}
           data={CartItems}
-          renderItem={({ item }) => <CartItem product={item.product} />}
+          renderItem={({ item }) => <CartItem product={item.product} quantity ={item.quantity} />}
         />
        
       <Text style={{color:'#5d3ebd', padding:15, fontWeight:'bold'}}>Önerilen Ürünler</Text> 
@@ -90,7 +103,7 @@ style={{backgroundColor:'white'}}
             <Text
               style={{ color: "#5d3ebd", fontSize: 15, fontWeight: "bold" }}
             >
-              ₺24
+              {totalPrice.toFixed(2)}
             </Text>
           </View>
         </View>

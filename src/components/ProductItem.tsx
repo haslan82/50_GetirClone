@@ -108,10 +108,12 @@ const ProductItem = ({ item, addItemToCart }: productItemType) => {
   );
 };
 const mapDispatchToProps = (dispatch) => {
+
   return {
-    addItemToCart: (Product) => {
-      dispatch(actions.addToCart({ quantity: 1, Product }));
-    },
+
+    addItemToCart: (product : Product) => 
+      dispatch(actions.addToCart({ quantity: 1, product }))
+    
   };
 };
 export default connect(null, mapDispatchToProps)(ProductItem);

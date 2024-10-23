@@ -18,7 +18,7 @@ const TextComponent =({detail, index}:{detail:string, index:number}) => {
         justifyContent:'space-between'
        
     }}>
-        <Text style={{color:index === 0 ? 'black' : '#687482', fontSize:index === 0 ? 11 : 13, fontWeight:index === 0 ? '400' : '500'}}>{detail} </Text>
+        <Text style={{color:index === 0 ? '#4e4e4e' : '#687482', fontSize:index === 0 ? 11 : 13, fontWeight:index === 0 ? '400' : '500'}}>{detail} </Text>
         {index!= 0 && <Entypo name="chevron-down" size={24} color="#9f9f9f" />}
     </View>
     )

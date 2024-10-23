@@ -20,6 +20,11 @@ import React, { useEffect, useState } from "react";
 import CartScreen from "../screens/CartScreen";
 import { connect } from "react-redux";
 import CartItem from "../components/CartItem";
+import { Product } from "../models/Index";
+import { clearCart } from "../redux/actions/CartActions";
+import * as actions from "../../src/redux/actions/CartActions";
+
+
 
 const Stack = createNativeStackNavigator();
   const tabHiddenRoutes = ["ProductDetails", "CartScreen"];
@@ -27,18 +32,18 @@ const Stack = createNativeStackNavigator();
 const { width, height } = Dimensions.get("window");
 
 
-const MyStack = ({ navigation, route,CartItems }:{CartItems:{product:Product, quantity:number}[]}) => {
+const MyStack = ({ navigation, route, CartItems,clearCart }:{CartItems:{product:Product, quantity:number}[], clearCart:()=> void}) => {
   const [totalPrice, setTotalPrice] = useState<number>(0)
 
   React.useLayoutEffect(() => {
     const routeName = getFocusedRouteNameFromRoute(route);
 
-    console.log("Route Name is ", routeName);
+   
     if (tabHiddenRoutes.includes(routeName)) {
-      console.log("Kapat ", routeName);
+     
       navigation.setOptions({ tabBarStyle: { display: "none" } });
     } else {
-      console.log("Aç ", routeName);
+   
       navigation.setOptions({ tabBarStyle: { display: "true" } });
     }
   }, [navigation, route]);
@@ -120,7 +125,7 @@ useEffect(() => {
                 <Text
                   style={{ color: "#5d3ebd", fontWeight: "bold", fontSize: 12 }}
                 >
-                  {totalPrice}
+                  {totalPrice.toFixed(2)}
 
                 </Text>
               </View>
@@ -148,7 +153,7 @@ useEffect(() => {
           ),
           headerRight: () => (
             <TouchableOpacity
-              onPress={() => navigation.navigate("CategoryDetails")}
+              /* onPress={() => navigation.navigate("CategoryDetails")} */
               style={{}}
             >
               <Foundation name="heart" size={24} color="#32177a" />
@@ -169,7 +174,8 @@ useEffect(() => {
         ),
         headerRight:()=>(
           <TouchableOpacity
-            onPress={() => navigation.navigate("ProductDetails")}
+           /*  onPress={() => navigation.navigate("ProductDetails")} */
+           onPress={() => clearCart()}
           >
             <Ionicons name="trash-sharp" size={24} color="white" />
           </TouchableOpacity>
@@ -190,12 +196,18 @@ const mapStateToProps = (state) =>{
 }
 
 
- function HomeNavigator({ navigation, route,CartItems }:{cartItems:Product[]}) {
-  return <MyStack navigation={navigation} route={route} CartItems={CartItems}/>
+const mapDispatchToProps = (dispatch) =>{
+  return {
+    clearCart:() => dispatch(actions.clearCart())
+  }
+}
+
+ function HomeNavigator({ navigation, route,CartItems, clearCart }:{clearCart:() => void}) {
+  return <MyStack navigation={navigation} route={route} CartItems={CartItems} clearCart={clearCart}/>
 }
 
 
-export default connect(mapStateToProps,null)(HomeNavigator)
+export default connect(mapStateToProps,mapDispatchToProps)(HomeNavigator)
 
 
 
