@@ -11,7 +11,7 @@ const Header = () => {
     <Image style={styles.image} source={{uri:"https://cdn.getir.com/misc/emoji/house.png"}}/>
     <View style={styles.headerOneView}>
         <Text style={{fontWeight:600, fontSize:16, marginLeft:5}}>Ev</Text>
-        <Text style={{fontWeight:500, fontSize:12, color:"#6E7480", marginLeft:6}}>N.Evler Mah. 1 Nolu Sok. No:7 Urla/İzmir </Text>
+        <Text style={{fontWeight:500, fontSize:12, color:"#6E7480", marginLeft:6}}>Çiğdem Mah. 12.Sok. No:7 Beykoz/İSTANBUL </Text>
         <Entypo name="chevron-right" size={24} color="#5D3EBD" />
     </View>
     <View style={styles.header2}>

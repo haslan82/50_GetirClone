@@ -30,4 +30,6 @@ react-native-screens
 
 ### GIF
 
+![](./assets/getir.gif)
+
 

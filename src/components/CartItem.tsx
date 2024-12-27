@@ -31,7 +31,7 @@ const CartItem = ({ product,quantity,removeFromCart }: CartItemProps) => {
         <View style={{borderWidth:0.4, borderColor:'lightgrey', borderRadius:8, padding:4}}>
          <Image
           style={{ height: height * 0.09, width: height * 0.09,  }}
-          source={{ uri:product?.product?.image }}
+          source={{ uri:product?.image }}
         /> 
         </View>
         
@@ -39,7 +39,7 @@ const CartItem = ({ product,quantity,removeFromCart }: CartItemProps) => {
           <Text
             style={{ fontSize: 13, fontWeight: "600", maxWidth: width * 0.45 }}
           >
-            {product?.product?.name}
+            {product?.name}
           </Text>
           <Text
             style={{
@@ -49,7 +49,7 @@ const CartItem = ({ product,quantity,removeFromCart }: CartItemProps) => {
               fontWeight: "600",
             }}
           >
-            {product?.product?.miktar}
+            {product?.miktar}
           </Text>
           <Text
             style={{
@@ -59,7 +59,7 @@ const CartItem = ({ product,quantity,removeFromCart }: CartItemProps) => {
               marginTop: 6,
             }}
           >
-            ₺{product?.product?.fiyat}
+            ₺{product?.fiyat}
           </Text>
         </View>
       </View>

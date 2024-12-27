@@ -1,7 +1,5 @@
-import { StatusBar } from "expo-status-bar";
-import { LogBox, StyleSheet, Text, View } from "react-native";
-import HomeScreen from "./src/screens/HomeScreen";
 import * as Linking from "expo-linking";
+import { LogBox, StyleSheet} from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import Router from "./src/navigation/Router";
 import "react-native-gesture-handler";
