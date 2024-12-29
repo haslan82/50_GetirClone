@@ -13,7 +13,6 @@ Navigasyon: React Navigation kullanılarak ekranlar arasında kolay ve akıcı g
 Responsive Tasarım: Farklı boyuttaki mobil cihazlarda sorunsuz bir deneyim sunmak için responsive bir tasarım uygulanmıştır.
 Bu uygulama, kullanıcıların günlük alışveriş ihtiyaçlarını kolaylaştırmak ve mobil cihazlar üzerinden pratik bir sipariş deneyimi sunmak için geliştirilmiştir.
 
-
 ## Kullanılan Teknolojiler
 React Native
 React
